@@ -83,6 +83,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -443,14 +444,20 @@ private fun InputBar(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(4.dp),
         ) {
-            IconButton(onClick = onCameraClick) {
+            IconButton(
+                onClick = onCameraClick,
+                modifier = Modifier.testTag("chat_camera_button"),
+            ) {
                 Icon(
                     imageVector = Icons.Default.PhotoCamera,
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.primary,
                 )
             }
-            IconButton(onClick = onPhotoPickerClick) {
+            IconButton(
+                onClick = onPhotoPickerClick,
+                modifier = Modifier.testTag("chat_photo_picker_button"),
+            ) {
                 Icon(
                     imageVector = Icons.Default.PhotoLibrary,
                     contentDescription = "Select Photo or video",
@@ -462,7 +469,8 @@ private fun InputBar(
                 onValueChange = onInputChanged,
                 modifier = Modifier
                     .weight(1f)
-                    .height(56.dp),
+                    .height(56.dp)
+                    .testTag("chat_input_field"),
                 keyboardOptions = KeyboardOptions(
                     capitalization = KeyboardCapitalization.Sentences,
                     imeAction = ImeAction.Send,
@@ -480,7 +488,9 @@ private fun InputBar(
             )
             FilledIconButton(
                 onClick = onSendClick,
-                modifier = Modifier.size(56.dp),
+                modifier = Modifier
+                    .size(56.dp)
+                    .testTag("chat_send_button"),
                 enabled = sendEnabled,
             ) {
                 Icon(

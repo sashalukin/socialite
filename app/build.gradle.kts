@@ -73,6 +73,11 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -84,6 +89,10 @@ dependencies {
     implementation(libs.glance.material)
 
     testImplementation(libs.junit)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.truth)
+    testImplementation(libs.ext.junit)
+    testImplementation(libs.espresso.core)
     androidTestImplementation(libs.truth)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -105,6 +114,8 @@ dependencies {
     implementation(libs.compose.material3.adaptive)
     implementation(libs.compose.material.icons)
     androidTestImplementation(libs.compose.ui.test)
+    testImplementation(composeBom)
+    testImplementation(libs.compose.ui.test)
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manisfest)
 

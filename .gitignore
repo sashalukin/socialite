@@ -21,3 +21,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Kotlin 2.x session data
+.kotlin/
